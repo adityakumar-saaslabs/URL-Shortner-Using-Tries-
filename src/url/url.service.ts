@@ -36,14 +36,14 @@ export class UrlService {
         }
         let node =await this.urlModel.findOne({_id:curr});
         if(node){
-            if(node.url=="/"){
+            if(node.url){
+                console.log('already created this url');
+                return false;
+            }
+            else{
                 node.url=LongUrl;
                 node.shortUrl=url;
                 await node.save();
-            }
-            else{
-                console.log('already created this url');
-                return false;
             }
         }
         return true;
