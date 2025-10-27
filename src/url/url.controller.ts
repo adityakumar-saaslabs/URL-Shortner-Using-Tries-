@@ -12,9 +12,9 @@ export class UrlController {
   @Get(':shortUrl')
   @Redirect('http://localhost:3000/', 302)
   async redirectToOrignalLink(@Param('shortUrl') shortUrl: string) {
-    let a = performance.now();
+    // let a = performance.now();
     const LongUrl = await this.urlService.getUrl(shortUrl);
-    console.log(performance.now() - a);
+    // console.log(performance.now() - a);   //~200 ms
     return { url: LongUrl, statusCode: 301 };
   }
 }
